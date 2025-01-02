@@ -3,6 +3,12 @@ const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const { hash } = require("bcryptjs");
 const path = require("path");
+const flash = require("connect-flash");
+
+const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
+const {database} = require("./keys");
+const sessionStore = new MySQLStore(database);
 
 // inicializacion 
 const app = express();
@@ -22,13 +28,23 @@ app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs"); 
 
 //middlewares - son funciones que se ejecutan cuando hay una peticion
+
+
+app.use(session({
+    secret: "fabricioSqlSession",
+    resave: false,
+    saveUninitialized: false,
+    store: sessionStore
+}));
+
+app.use(flash());
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 // Variables Globales
 app.use((req,res,next) => {
-
+    app.locals.success = req.flash("success");
     next();
 });
 
