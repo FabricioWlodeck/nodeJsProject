@@ -24,7 +24,7 @@ create table links(
     id_links int(11) auto_increment not null,
     title varchar(150) not null,
     url varchar(255) not null,
-    descripcion text,
+    description text,
     user_id int,
     created_at timestamp not null default current_timestamp,
     foreign key (user_id) references users(id),
@@ -33,3 +33,5 @@ create table links(
 
 alter table links
     modify id_links int(11) not null auto_increment, auto_increment=2;
+
+/* ALTER TABLE links CHANGE descripcion description TEXT; */

@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 
 const pool = require("../database")
+const { isLoggedIn } = require("../lib/auth.js");
 
-router.get("/add", (req, res) => {
+
+router.get("/add", isLoggedIn, (req, res) => {
     res.render("links/add.hbs");
 });
 
-router.post("/add", async (req, res)=>{
+router.post("/add", isLoggedIn, async (req, res)=>{
     const {title, url, description} = req.body;
     const newlink = {
         title,
@@ -20,27 +22,27 @@ router.post("/add", async (req, res)=>{
     res.redirect("/links/");
 });
 
-router.get("/", async (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
     const links = await pool.query("select * from links");
     console.log(links);
     res.render("links/list", {links: links})
 });
 
-router.get("/delete/:id_links", async(req, res)=>{
+router.get("/delete/:id_links", isLoggedIn, async(req, res)=>{
     const {id_links} = req.params;
     await pool.query("delete from links where id_links = ?", [id_links]);
     req.flash("success", "Link Removed successfully.");
     res.redirect("/links/");
 });
 
-router.get("/edit/:id_links", async(req, res)=>{
+router.get("/edit/:id_links", isLoggedIn, async(req, res)=>{
     const {id_links} = req.params;
     const links = await pool.query("select * from links where id_links = ?", [id_links]);
     console.log(links[0]);
     res.render("links/edit", {link: links[0]});
 });
 
-router.post("/edit/:id_links", async (req, res)=>{
+router.post("/edit/:id_links", isLoggedIn, async (req, res)=>{
     const {id_links} = req.params;
     const {title, url, description} = req.body;
     const newlink = {
