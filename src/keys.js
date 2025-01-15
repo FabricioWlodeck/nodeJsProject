@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const path = require("path");
 
-const envPath = path.join(__dirname, ".env");
+const envPath = path.join(".env");
 const configResult = dotenv.config({ path: envPath });
 
 
