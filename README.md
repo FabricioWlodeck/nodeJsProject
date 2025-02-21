@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://nodejs.org/es" target="blank">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA5BBdMgPjRjMBUwt8s1wn5FpSMMWIgqb_QA&s" width="250" alt="Node Logo" />
+    <img src="https://www.svgrepo.com/show/333576/nodejs.svg" width="150" alt="Node Logo" />
   </a>
 </p>
 
