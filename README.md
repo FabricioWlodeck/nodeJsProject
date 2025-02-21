@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://nodejs.org/es" target="blank">
-    <img src="https://www.svgrepo.com/show/333576/nodejs.svg" width="150" alt="Node Logo" />
+    <img src="[https://www.svgrepo.com/show/333576/nodejs.svg](https://www.svgrepo.com/show/303266/nodejs-icon-logo.svg)" width="150" alt="Node Logo" />
   </a>
 </p>
 
-# My Favorite Links l
+# My Favorite Links
 This project is an application to store your favorite links. It consists of a CRUD system and includes simple password encryption and session authentication. Some of the main technologies used are Node.js, Express, MySQL, and Handlebars.  
 
 ## Installation:
