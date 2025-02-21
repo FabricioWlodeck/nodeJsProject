@@ -9,8 +9,8 @@ This project is an application to store your favorite links. It consists of a CR
 
 ## Installation:
 1. Clone the project.  
-2. Run: ```npm i```  
+2. Install dependencies: ```npm i```  
 3. Configure your environment variables in the ```.env``` file.  
-4. Start the database (I recommend using XAMPP).  
+4. Start the database (I use XAMPP).  
 5. Use the ```db.sql``` file to recreate the database.  
 6. Start the application: ```npm run dev``` (default port: 4000).
