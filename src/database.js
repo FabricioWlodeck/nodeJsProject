@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("pg");
 const {promisify} = require("util");
 const {database} = require("./keys");
 
