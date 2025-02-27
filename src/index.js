@@ -11,16 +11,12 @@ const {database} = require("./keys");
 const sessionStore = new MySQLStore(database);
 const passport = require("passport");
 
-const { database } = require('./keys.js');
-const { port } = database;
-
-
 // inicializacion 
 const app = express();
 require("./lib/passport.js");
 
 //configuracion
-app.set("port", port);
+app.set("port",  process.env.PORT || 4000);
 app.set("views", path.join(__dirname, "views"));
 const hbs = exphbs.create({
     defaultLayout: "main",
@@ -67,6 +63,6 @@ app.use("/links", require("./routes/links.js"));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Starting the server
-app.listen(app.get("port"), ()=> {
-    console.log("Server on port", app.get("port"));
+app.listen(process.env.PORT, ()=> {
+    console.log("Server on port", process.env.PORT);
 });
