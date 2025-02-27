@@ -1,8 +1,8 @@
-const { pool } = require("pg");
+const { Pool  } = require("pg");
 const {promisify} = require("util");
 const {database} = require("./keys");
 
-const pool = new pool (database);
+const pool = new Pool  (database);
 pool.connect((err, connection) => {
     if(err){
         if (err.code === "POTOCOL_CONNECTION_LOST"){
