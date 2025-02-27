@@ -1,9 +1,9 @@
-const mysql = require("pg");
+const { pool } = require("pg");
 const {promisify} = require("util");
 const {database} = require("./keys");
 
-const pool = mysql.createPool(database);
-pool.getConnection((err, connection) => {
+const pool = new pool (database);
+pool.connect((err, connection) => {
     if(err){
         if (err.code === "POTOCOL_CONNECTION_LOST"){
             console.error("DATABASE CONNECTION WAS CLOSED");
@@ -25,6 +25,6 @@ pool.getConnection((err, connection) => {
 });
 
 //promisify pool query
-pool.query = promisify(pool.query)
+/* pool.query = promisify(pool.query) */
 
 module.exports = pool;
