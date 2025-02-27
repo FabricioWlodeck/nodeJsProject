@@ -11,13 +11,16 @@ const {database} = require("./keys");
 const sessionStore = new MySQLStore(database);
 const passport = require("passport");
 
+const { database } = require('./keys.js');
+const { port } = database;
+
 
 // inicializacion 
 const app = express();
 require("./lib/passport.js");
 
 //configuracion
-app.set("port", process.env.PORT || 4000);
+app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 const hbs = exphbs.create({
     defaultLayout: "main",
