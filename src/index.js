@@ -11,6 +11,7 @@ const {database} = require("./keys");
 const sessionStore = new MySQLStore(database);
 const passport = require("passport");
 
+
 // inicializacion 
 const app = express();
 require("./lib/passport.js");
